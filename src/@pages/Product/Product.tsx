@@ -1,8 +1,10 @@
-import React, { FC, Fragment, useEffect } from "react";
+import { Product } from "@widgets/products";
+import React, { FC, Fragment } from "react";
 
-
-export const Product: FC = () => {
+export const ProductPage: FC = () => {
   return (
-    <div></div>
+    <Fragment>
+      <Product />
+    </Fragment>
   );
 };

@@ -1,1 +1,1 @@
-export {}
+export {GeneralLayout} from './ui/GeneralLayout/GeneralLayout'
