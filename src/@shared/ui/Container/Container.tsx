@@ -3,8 +3,11 @@ import styles from "./Container.module.sass";
 
 interface ContainerProps {
   children: ReactNode;
+  fluid?: boolean;
 }
 
-export const Container: FC<ContainerProps> = ({ children }) => {
-  return <div className={styles["container"]}>{children}</div>;
+export const Container: FC<ContainerProps> = ({ children, fluid }) => {
+  let classNames = styles["container"];
+  if (fluid) classNames += ` ${styles["container_fluid"]}`;
+  return <div className={classNames}>{children}</div>;
 };

@@ -7,21 +7,32 @@ import { Badge } from "@shared/ui/Badge/Badge";
 import { Toggle } from "@shared/ui/Toggle/Toggle";
 import { Separator } from "@shared/ui/Separator/Separator";
 import { Button } from "@shared/ui/Button/Button";
-import { Cart } from "@shared/ui/Icons/Cart";
 import { Heart } from "@shared/ui/Icons/Heart";
-import { ProductHaracteristic } from "@entities/products/ui/ProductHaracteristic/ProductHaracteristic";
+import { DoubleSlider } from "@shared/ui/DoubleSlider/DoubleSlider";
+import { slides } from "@widgets/products/config/consts";
+import { AddProductToCart } from "@features/products/ui/AddProductToCart/AddProductToCart";
+import { useAppSelector } from "@shared/lib/hooks/redux";
+import { Loader } from "@shared/ui/Loader/Loader";
+import { formatPrice } from "@shared/model/utils";
 
 export const Product: FC = () => {
+  const { product } = useAppSelector((state) => state.rootReducer.productReducer);
+
+  if (!product) return <Loader />;
+
   return (
-    <Stack className={styles["breadcrumbs"]} wrap="no-wrap" gap={32}>
+    <Stack className={styles["product"]} wrap="no-wrap" gap={32}>
       <Title>Кроссовки мужские Skechers Sunny Dale</Title>
-      <Stack direction="row" gap={48}>
-        <Stack gap={48}>
+      <Stack wrap="no-wrap" direction="row" gap={48}>
+        <div className={styles["slider-wrapper"]}>
+          <DoubleSlider slides={slides} />
+        </div>
+        <Stack className={styles["product__content"]} gap={48}>
           <Stack direction="row" gap={48}>
             <Stack gap={32}>
               <Stack gap={24}>
-                <Text color="red">166 534.00 цена без скидки</Text>
-                <Title>122 566 ₽</Title>
+                <Text color="red">{formatPrice(product.price)} цена без скидки</Text>
+                <Title>{formatPrice(product.discountPrice)}</Title>
               </Stack>
               <Stack align="center" direction="row">
                 <Badge>12 штук в уп.</Badge>
@@ -44,11 +55,7 @@ export const Product: FC = () => {
                 </Stack>
               </Stack>
               <Stack align="center" direction="row" gap={24}>
-                <Button variant="accent-400" height={56}>
-                  <Stack align="center" gap={12} direction="row">
-                    <Cart />В корзину
-                  </Stack>
-                </Button>
+                <AddProductToCart product={product} />
                 <Button variant="accent-100" height={56}>
                   <Heart />
                 </Button>
@@ -58,14 +65,27 @@ export const Product: FC = () => {
             <Stack gap={32}>
               <Title>Характеристики</Title>
               <Stack direction="row" justify="space-between" wrap="wrap" gap={24}>
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
-                <ProductHaracteristic haracteristic={{ title: "Код поставщика", value: "ELC00696" }} />
+                {product.haracteristic.map((haracteristic) => (
+                  <Stack key={haracteristic.name} className={styles["product__haracteristic"]} gap={12}>
+                    <Text weight={700}>{haracteristic.value}</Text>
+                    <Text color="gray-300" size={12}>
+                      {haracteristic.name}
+                    </Text>
+                  </Stack>
+                ))}
               </Stack>
             </Stack>
+          </Stack>
+          <Stack gap={24}>
+            <Title>Описание товара</Title>
+            <Text>
+              Создание приверженного покупателя специфицирует неопровержимый комплексный анализ ситуации. CTR
+              существенно индуцирует из ряда вон выходящий SWOT-анализ. Воздействие на потребителя определяет
+              возрастающий интеграл по поверхности, что известно даже школьникам. Отсюда естественно следует, что
+              коммуникация уравновешивает косвенный фактор коммуникации. Поле направлений естественно допускает
+              экспериментальный скачок функции, таким образом сбылась мечта идиота - утверждение полностью доказано.
+              Арифметическая прогрессия притягивает линейно зависимый пул лояльных изданий.
+            </Text>
           </Stack>
         </Stack>
       </Stack>

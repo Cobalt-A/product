@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import { Stack } from "@shared/ui/Stack/Stack";
 import { Navigation } from "../Navigation/Navigation";
 import { BreadCrumbs } from "../BreadCrubms/BreadCrubms";
+import { Footer } from "../Footer/Footer";
 
 export const GeneralLayout: FC = () => {
   return (
@@ -30,6 +31,7 @@ export const GeneralLayout: FC = () => {
               </Stack>
             </Container>
           </main>
+          <Footer />
         </Fragment>
       </Suspense>
     </Fragment>

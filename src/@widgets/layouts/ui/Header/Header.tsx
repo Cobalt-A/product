@@ -14,13 +14,14 @@ import { Heart } from "@shared/ui/Icons/Heart";
 import { Cart } from "@shared/ui/Icons/Cart";
 import { Text } from "@shared/ui/Text/Text";
 import { Angle } from "@shared/ui/Icons/Angle";
+import { Separator } from "@shared/ui/Separator/Separator";
 
 export const Header: FC = () => {
   return (
     <header className={styles["header"]}>
-      <Container>
-        <Stack gap={0}>
-          <Stack wrap="no-wrap" align="center" gap={24} direction="row">
+      <Container fluid>
+        <Stack height="100" gap={0}>
+          <Stack height="100" wrap="no-wrap" align="center" gap={24} direction="row">
             <Link to="/#">
               <Logo />
             </Link>
@@ -45,7 +46,7 @@ export const Header: FC = () => {
             <Button padding={0} variant="transparent">
               <Bell />
             </Button>
-            <span className={styles["separator"]}></span>
+            <Separator height="100" variant="vertical" />
             <Button padding={0} variant="transparent">
               <Heart />
             </Button>

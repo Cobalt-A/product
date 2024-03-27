@@ -11,6 +11,7 @@ interface StackProps {
   wrap?: "wrap" | "no-wrap";
   className?: string;
   width?: "auto";
+  height?: "100" | "auto";
 }
 
 export const Stack: FC<StackProps> = ({
@@ -18,17 +19,20 @@ export const Stack: FC<StackProps> = ({
   className,
   gap = 20,
   direction = "column",
-  justify = "start",
-  align = "start",
+  justify,
+  align,
   tag = "div",
   wrap,
   width,
+  height,
 }) => {
-  let classNames = `${styles["stack"]} ${styles[`stack_gap-${gap}`]} ${styles[`stack_direction-${direction}`]} ${
-    styles[`stack_justify-${justify}`]
-  } ${styles[`stack_align-${align}`]} ${styles[`stack_${wrap}`]}`;
+  let classNames = `${styles["stack"]} ${styles[`stack_gap-${gap}`]} ${styles[`stack_direction-${direction}`]}`;
+  if (justify) classNames += ` ${styles[`stack_justify-${justify}`]}`;
+  if (align) classNames += ` ${styles[`stack_align-${align}`]}`;
   if (className) classNames += ` ${className}`;
   if (width) classNames += ` ${styles["stack_width-auto"]}`;
+  if (height) classNames += ` ${styles[`stack_height-${height}`]}`;
+  if (wrap) classNames += ` ${styles[`stack_${wrap}`]}`;
   const Tag = tag;
 
   return <Tag className={classNames}>{children}</Tag>;
