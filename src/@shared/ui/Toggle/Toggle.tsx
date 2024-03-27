@@ -1,5 +1,5 @@
 import React, { FC, MouseEventHandler } from "react";
-import "./Toggle.sass";
+import styles from "./Toggle.module.sass";
 
 interface ToggleProps {
   isActive: boolean;
@@ -8,9 +8,9 @@ interface ToggleProps {
 
 export const Toggle: FC<ToggleProps> = ({ isActive, onClick }) => {
   return (
-    <label onClick={onClick} className="checkbox-ios">
+    <label onClick={onClick} className={styles["toggle"]}>
       <input type="checkbox" checked disabled />
-      <span className="checkbox-ios-switch"></span>
+      <span className={styles["toggle-switch"]}></span>
     </label>
   );
 };

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./Badge.module.sass";
 
-interface ButtonProps {
+interface BadgeProps {
   children: React.ReactNode;
   className?: string;
   as?: React.ElementType<any> & keyof JSX.IntrinsicElements;
@@ -10,7 +10,7 @@ interface ButtonProps {
   padding?: number;
 }
 
-export const Badge: FC<ButtonProps> = ({
+export const Badge: FC<BadgeProps> = ({
   children,
   className,
   as = "button",

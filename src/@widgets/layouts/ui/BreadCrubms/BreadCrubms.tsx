@@ -6,7 +6,7 @@ import styles from "./BreadCrubms.module.sass";
 
 export const BreadCrumbs: FC = () => {
   return (
-    <Stack className={styles["breadcrumbs"]} wrap="no-wrap" align="center" gap={4} direction="row">
+    <Stack className={styles["breadcrumbs"]} wrap="no-wrap" align="center" gap={8} direction="row">
       <Link variant="gray-300" to="/">
         Каталог
       </Link>

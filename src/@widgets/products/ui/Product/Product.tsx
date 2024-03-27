@@ -10,10 +10,10 @@ import { Button } from "@shared/ui/Button/Button";
 import { Heart } from "@shared/ui/Icons/Heart";
 import { DoubleSlider } from "@shared/ui/DoubleSlider/DoubleSlider";
 import { slides } from "@widgets/products/config/consts";
-import { AddProductToCart } from "@features/products/ui/AddProductToCart/AddProductToCart";
+import { AddProductToCart } from "@features/products";
 import { useAppSelector } from "@shared/lib/hooks/redux";
 import { Loader } from "@shared/ui/Loader/Loader";
-import { formatPrice } from "@shared/model/utils";
+import { formatPrice } from "@shared/model/utils/products";
 
 export const Product: FC = () => {
   const { product } = useAppSelector((state) => state.rootReducer.productReducer);
@@ -22,7 +22,9 @@ export const Product: FC = () => {
 
   return (
     <Stack className={styles["product"]} wrap="no-wrap" gap={32}>
-      <Title>Кроссовки мужские Skechers Sunny Dale</Title>
+      <Title size={32} weight={500} font="gotham-pro">
+        {product.name}
+      </Title>
       <Stack wrap="no-wrap" direction="row" gap={48}>
         <div className={styles["slider-wrapper"]}>
           <DoubleSlider slides={slides} />
@@ -31,10 +33,20 @@ export const Product: FC = () => {
           <Stack direction="row" gap={48}>
             <Stack gap={32}>
               <Stack gap={24}>
-                <Text color="red">{formatPrice(product.price)} цена без скидки</Text>
-                <Title>{formatPrice(product.discountPrice)}</Title>
+                <Text font="gotham-pro" weight={500} color="red">
+                  {formatPrice(product.price, 2).normalize("NFKD")} цена без скидки
+                </Text>
+                <Stack width="auto" direction="row" gap={16} align="center">
+                  <Title font="gotham-pro" size={32} weight={700}>
+                    {formatPrice(product.discountPrice, 0).normalize("NFKD")}
+                    <Title font="sans-serif" size={32} weight={700} as={"span"}>
+                      ₽
+                    </Title>
+                  </Title>
+                  <Badge variant="red">-15%</Badge>
+                </Stack>
               </Stack>
-              <Stack align="center" direction="row">
+              <Stack gap={12} align="center" direction="row">
                 <Badge>12 штук в уп.</Badge>
                 <Toggle isActive={true} />
                 <Text weight={500}>Заказ упаковкой</Text>
@@ -42,19 +54,25 @@ export const Product: FC = () => {
               <Separator />
               <Stack align="center" direction="row">
                 <Stack gap={8} direction="column">
-                  <Text weight={500}>Завтра</Text>
-                  <Text color="gray-300">Доставка</Text>
+                  <Text weight={700}>Завтра</Text>
+                  <Text size={12} color="gray-300">
+                    Доставка
+                  </Text>
                 </Stack>
                 <Stack gap={8} direction="column">
-                  <Text weight={500}>Завтра</Text>
-                  <Text color="gray-300">Доставка</Text>
+                  <Text weight={700}>Завтра</Text>
+                  <Text size={12} color="gray-300">
+                    Доставка
+                  </Text>
                 </Stack>
                 <Stack gap={8} direction="column">
-                  <Text weight={500}>Завтра</Text>
-                  <Text color="gray-300">Доставка</Text>
+                  <Text weight={700}>Завтра</Text>
+                  <Text size={12} color="gray-300">
+                    Доставка
+                  </Text>
                 </Stack>
               </Stack>
-              <Stack align="center" direction="row" gap={24}>
+              <Stack align="center" direction="row" gap={16}>
                 <AddProductToCart product={product} />
                 <Button variant="accent-100" height={56}>
                   <Heart />
@@ -77,15 +95,10 @@ export const Product: FC = () => {
             </Stack>
           </Stack>
           <Stack gap={24}>
-            <Title>Описание товара</Title>
-            <Text>
-              Создание приверженного покупателя специфицирует неопровержимый комплексный анализ ситуации. CTR
-              существенно индуцирует из ряда вон выходящий SWOT-анализ. Воздействие на потребителя определяет
-              возрастающий интеграл по поверхности, что известно даже школьникам. Отсюда естественно следует, что
-              коммуникация уравновешивает косвенный фактор коммуникации. Поле направлений естественно допускает
-              экспериментальный скачок функции, таким образом сбылась мечта идиота - утверждение полностью доказано.
-              Арифметическая прогрессия притягивает линейно зависимый пул лояльных изданий.
-            </Text>
+            <Title size={24} weight={500}>
+              Описание товара
+            </Title>
+            <Text size={18}>{product.description}</Text>
           </Stack>
         </Stack>
       </Stack>
