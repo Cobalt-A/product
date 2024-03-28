@@ -15,8 +15,15 @@ import { Cart } from "@shared/ui/Icons/Cart";
 import { Text } from "@shared/ui/Text/Text";
 import { Angle } from "@shared/ui/Icons/Angle";
 import { Separator } from "@shared/ui/Separator/Separator";
+import { useAppSelector } from "@shared/lib/hooks/redux";
+import { getCartPrice } from "@widgets/layouts/model/utils";
+import { formatPrice } from "@shared/model/utils/products";
 
 export const Header: FC = () => {
+  const { productsCart } = useAppSelector((state) => state.rootReducer.productReducer);
+
+  const cartPrice = getCartPrice(productsCart);
+
   return (
     <header className={styles["header"]}>
       <Container fluid>
@@ -53,8 +60,8 @@ export const Header: FC = () => {
             <Button variant="accent-100">
               <Stack direction="row" align="center" gap={12}>
                 <Cart />{" "}
-                <Text weight={700} wrap="no-wrap">
-                  144 235
+                <Text font="gotham-pro" weight={700} wrap="no-wrap">
+                  {formatPrice(cartPrice, 0).normalize("NFKD")}
                   <Text as="span" font="sans-serif" weight={700}>
                     ₽
                   </Text>
