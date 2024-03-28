@@ -7,6 +7,10 @@ import { Text } from "@shared/ui/Text/Text";
 import React, { FC } from "react";
 import styles from "./Footer.module.sass";
 import { Separator } from "@shared/ui/Separator/Separator";
+import { File } from "@shared/ui/Icons/File";
+import { Camera } from "@shared/ui/Icons/Camera";
+import { Clock } from "@shared/ui/Icons/Clock";
+import { Youtube } from "@shared/ui/Icons/Youtube";
 
 export const Footer: FC = () => {
   return (
@@ -28,7 +32,7 @@ export const Footer: FC = () => {
                 </Stack>
                 <Stack width="auto" gap={12}>
                   <Text size={16} weight={700}>
-                    8 800 841-95-95
+                    support@sport.ru
                   </Text>
                   <Text color="gray-400" size={12}>
                     Служба поддержки
@@ -37,9 +41,15 @@ export const Footer: FC = () => {
               </Stack>
             </Stack>
             <Stack width="auto" align="center" justify="end" direction="row" gap={32}>
-              <Link to="/">Вакансии</Link>
-              <Link to="/">Блог</Link>
-              <Link to="/">Акции</Link>
+              <Link weight={700} to="/">
+                Вакансии
+              </Link>
+              <Link weight={700} to="/">
+                Блог
+              </Link>
+              <Link weight={700} to="/">
+                Акции
+              </Link>
               <Button variant="accent-100">Предложить идею</Button>
             </Stack>
           </Stack>
@@ -50,63 +60,87 @@ export const Footer: FC = () => {
                 Женщинам
               </Text>
               <Stack gap={16}>
+                <Link to="/">Одежда</Link>
                 <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
+                <Link to="/">Аксессуары</Link>
+                <Link to="/">Белье</Link>
+                <Link to="/">Bra fitting</Link>
               </Stack>
             </Stack>
             <Stack gap={24}>
               <Text weight={500} size={16}>
-                Женщинам
+                Мужчинам
               </Text>
               <Stack gap={16}>
+                <Link to="/">Одежда</Link>
                 <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
+                <Link to="/">Аксессуары</Link>
+                <Link to="/">Белье</Link>
               </Stack>
             </Stack>
             <Stack gap={24}>
               <Text weight={500} size={16}>
-                Женщинам
+                Детям
               </Text>
               <Stack gap={16}>
+                <Link to="/">Одежда</Link>
                 <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
+                <Link to="/">Аксессуары</Link>
+                <Link to="/">Белье</Link>
+                <Link to="/">Игрушки</Link>
+                <Link to="/">Малыши</Link>
               </Stack>
             </Stack>
             <Stack gap={24}>
               <Text weight={500} size={16}>
-                Женщинам
+                Виды спорта
               </Text>
               <Stack gap={16}>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
-                <Link to="/">Обувь</Link>
+                <Link to="/">Велоспорт</Link>
+                <Link to="/">Туризм</Link>
+                <Link to="/">Тренажеры и фитнес</Link>
+                <Link to="/">Командные виды спорта</Link>
+                <Link to="/">Самокаты</Link>
               </Stack>
             </Stack>
           </Stack>
           <Separator variant="horizontal" />
           <Stack gap={40}>
             <Stack justify="center" direction="row" gap={28}>
-              <Link to="/">PDF презентация</Link>
-              <Link to="/">Видео инструкция </Link>
-              <Link to="/">FAQ</Link>
-              <Link to="/">Мы на YouTube</Link>
-              <Link to="/">Политика конфиденциальности </Link>
-              <Link to="/">Лицензионное соглашение</Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                <Stack align="center" direction="row" gap={4}>
+                  <File /> PDF презентация
+                </Stack>
+              </Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                <Stack align="center" direction="row" gap={4}>
+                  <Camera /> Видео инструкция
+                </Stack>
+              </Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                <Stack align="center" direction="row" gap={4}>
+                  <Clock /> FAQ
+                </Stack>
+              </Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                <Stack align="center" direction="row" gap={4}>
+                  <Youtube /> Мы на YouTube
+                </Stack>
+              </Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                Политика конфиденциальности
+              </Link>
+              <Link size={12} weight={500} variant="gray-300" to="/">
+                Лицензионное соглашение
+              </Link>
             </Stack>
-            <Text align="center">
+            <Text color="gray-300" align="center">
               Настоящая Политика обработки персональных данных разработана в соответствии с Конституцией Российской
               Федерации, Трудовым кодексом Российской Федерации, Гражданским кодексом Российской Федерации, Федеральным
               законом от 27 июля 2006 года 149-ФЗ "Об информации, информационных технологиях и о защите информации",
             </Text>
             <Stack justify="center" align="center" gap={24} direction="row">
-              <Logo />
+              <Logo variant="gray" />
               <Text color="gray-250">Разработка платформы</Text>
             </Stack>
           </Stack>

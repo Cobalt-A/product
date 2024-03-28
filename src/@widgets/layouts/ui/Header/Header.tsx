@@ -43,20 +43,30 @@ export const Header: FC = () => {
               </Stack>
             </Stack>
 
-            <Button padding={0} variant="transparent">
+            <Button className={styles["color-accent-400"]} padding={0} variant="transparent">
               <Bell />
             </Button>
             <Separator height="100" variant="vertical" />
-            <Button padding={0} variant="transparent">
+            <Button className={styles["color-gray-400"]} padding={0} variant="transparent">
               <Heart />
             </Button>
             <Button variant="accent-100">
-              <Cart /> <Text wrap="no-wrap">144 235₽</Text>
+              <Stack direction="row" align="center" gap={12}>
+                <Cart />{" "}
+                <Text weight={700} wrap="no-wrap">
+                  144 235
+                  <Text as="span" font="sans-serif" weight={700}>
+                    ₽
+                  </Text>
+                </Text>
+              </Stack>
             </Button>
             <Stack align="center" width="auto" direction="row" gap={16}>
               <img className={styles["avatar"]} src="./images/Avatar.jpg" alt="ava" />
-              <Text wrap="no-wrap">Ермаков Е.</Text>
-              <Button padding={0} variant="transparent">
+              <Text weight={500} wrap="no-wrap">
+                Ермаков Е.
+              </Text>
+              <Button className={styles["color-accent-400"]} padding={0} variant="transparent">
                 <Angle />
               </Button>
             </Stack>

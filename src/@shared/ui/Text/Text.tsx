@@ -10,7 +10,7 @@ interface TextProps {
   wrap?: "no-wrap";
   color?: string;
   align?: "center";
-  font?: "gotham-pro" | "gotham";
+  font?: "gotham-pro" | "gotham" | "sans-serif";
 }
 
 export const Text: FC<TextProps> = ({

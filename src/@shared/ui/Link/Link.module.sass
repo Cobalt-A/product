@@ -1,5 +1,6 @@
 .link
   text-decoration: none
+  display: inline-block
 
   &_size-14
     font-size: 14px
@@ -7,11 +8,14 @@
   &_size-12
     font-size: 12px
 
-  &_weight
+  &_weight-400
     font-weight: 400
 
-  &_weight
+  &_weight-500
     font-weight: 500
+
+  &_weight-700
+    font-weight: 700
 
   &_accent-100
     transition: .3s
@@ -19,8 +23,15 @@
     &:hover
       color: var(--accent-400)
 
+  &_accent-400
+    transition: .3s
+    color: var(--accent-400)
+
   &_gray-300
     color: var(--gray-300)
+    transition: .3s
+    &:hover
+      color: var(--accent-400)
 
   &_black
     color: var(--black)

@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick?: MouseEventHandler<HTMLElement>;
   width?: "100";
   align?: "center";
+  weight?: number;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -23,6 +24,7 @@ export const Button: FC<ButtonProps> = ({
   onClick,
   width,
   align,
+  weight,
 }) => {
   let classNames = `${styles["button"]} ${styles[`button_variant-${variant}`]} ${styles[`button_height-${height}`]} ${
     styles[`button_padding-${padding}`]
@@ -30,6 +32,7 @@ export const Button: FC<ButtonProps> = ({
   if (className) classNames += ` ${className}`;
   if (width) classNames += ` ${styles[`button_width-${width}`]}`;
   if (align) classNames += ` ${styles[`button_align-${align}`]}`;
+  if (weight) classNames += ` ${styles[`button_weight-${weight}`]}`;
 
   const Tag = as;
   return (

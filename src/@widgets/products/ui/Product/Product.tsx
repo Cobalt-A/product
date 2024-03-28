@@ -81,7 +81,9 @@ export const Product: FC = () => {
             </Stack>
             <Separator variant="vertical" />
             <Stack gap={32}>
-              <Title>Характеристики</Title>
+              <Title weight={500} size={20}>
+                Характеристики
+              </Title>
               <Stack direction="row" justify="space-between" wrap="wrap" gap={24}>
                 {product.haracteristic.map((haracteristic) => (
                   <Stack key={haracteristic.name} className={styles["product__haracteristic"]} gap={12}>
